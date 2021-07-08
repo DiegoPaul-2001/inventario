@@ -162,12 +162,7 @@ a.socialIcon:hover,
     transition: all 0.8s;
     transition: all 0.8s
 }
-
-table {
-    -webkit-box-shadow: 4px 4px 15px rgb(48, 3, 100);
-    box-shadow:4px 4px 15px rgb(48, 3, 100);
-    filter: shadow(color=rgb(48, 3, 100), direction=135, strength=2);
-}
+       
 form{
     -webkit-box-shadow: 20px 20px 20px rgb(25, 25, 56);
     box-shadow:20px 20px 20px rgb(25, 25, 56);

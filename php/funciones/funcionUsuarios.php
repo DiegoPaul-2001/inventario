@@ -15,7 +15,7 @@
     }        
     function consultarTodos(){
         $conexion = conexion();
-        $buscar = "SELECT USUID, USUCEDULA, USUNOMBRE, USUUSUARIO, USUCLAVE, USUCORREO, USUTELEFONO, USUTIPO  FROM usuarios where USUBORRADOR='1'";
+        $buscar = "SELECT USUID, USUCEDULA, USUNOMBRE, USUUSUARIO, USUCLAVE, USUCORREO, USUTELEFONO, USUTIPO  FROM usuarios where USUBORRADO='1'";
         $unir = mysqli_query($conexion, $buscar);
 	    return $unir;        
     }

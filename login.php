@@ -50,8 +50,8 @@ include("php/funciones/funcionUsuarios.php");
 $conexion = conexion();
 if (isset($_POST['ingresar'])) {
     $usuario = $_POST['usuario'];
-    $contraseña = $_POST['contra'];
-    $ver = buscar($usuario, $contraseña);
+    $contra = $_POST['contra'];
+    $ver = buscarUsuario($usuario, $contra);
     session_start();
     $_SESSION['usu'] = $usuario;
 
