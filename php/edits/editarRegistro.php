@@ -26,7 +26,7 @@
 </head>
 <body>
     <?php
-        include('../buscarUsuarios.php');
+        include('../listas/buscarUsuarios.php');
         if (isset($_POST)) {
             $edit = $_POST['editar'];
             $editar = buscarPorId($edit);
