@@ -82,7 +82,7 @@
             }
             if (isset($_POST['editar'])) {  
                 $edit = $_POST['editar'];
-                header("Location: edits/editarRegistro.php"); 
+                header("Location: ../edits/editarRegistro.php"); 
             }
     ?>
     </div>
