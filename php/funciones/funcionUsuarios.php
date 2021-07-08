@@ -29,19 +29,16 @@
     function actualizar(int $id ,string $cedula, string $nombre, string $usuario,string $clave, string $correo, string $telefono, string $tipo, string $borrador)
     {
         $conexion = conexion();       
-        $actualizar = "update asignatura set USUCEDULA=$cedula, USUNOMBRE=$nombre, USUUSUARIO='$usuario', USUCLAVE='$clave', USUCORREO='$correo', USUTELEFONO='$telefono', USUTIPO='$tipo', USUBORRADOR='$borrador' where USUID = $id;";
+        $actualizar = "update usuarios set USUCEDULA=$cedula, USUNOMBRE=$nombre, USUUSUARIO='$usuario', USUCLAVE='$clave', USUCORREO='$correo', USUTELEFONO='$telefono', USUTIPO='$tipo', USUBORRADO='$borrador' where USUID = $id;";
         $unir = mysqli_query($conexion, $actualizar);
         return $unir;
     }
     function eliminar(int $a)
     {
-        $conexion = conexion();
-        $eliminar= "delete from usuarios where USUID = $a;";
+        $conexion = conexion();   
+        $eliminar = "update usuarios set USUBORRADO='0' where USUID = $a;";
         $unir = mysqli_query($conexion, $eliminar);
 	    return $unir;   
-        $actualizar = "update asignatura set USUBORRADOR='0' where USUID = $a;";
-        $unir1 = mysqli_query($conexion, $actualizar);
-	    return $unir1;   
     }
     function buscarUsuario(string $usuario, string $contra)
     {                

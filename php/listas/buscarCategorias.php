@@ -22,9 +22,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     <!-- (Optional) Latest compiled and minified JavaScript translation files -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
 
-    <title>Document</title>
+    <title>Lista de Categorias</title>
 </head>
 <body>
     <br>
@@ -32,44 +32,32 @@
     <br>
     <br>
     <div class="container col-8">
-    <a href="registros/registrarUsuario.php"><button class="btn btn-primary" type="button">AGREGAR</button></a>
+    <a href="../registros/registrarCategorias.php"><button class="btn btn-primary" type="button">AGREGAR</button></a>
     <a href="javascript:location.reload()"><button class="btn btn-success" type="button">REFRESCAR</button></a>
     <br><br>
     <?php
-        include("funciones/funcionUsuarios.php");
+        include("../funciones/funcionCategorias.php");
         $conexion = conexion();        
         $revisar = consultarTodos();
         $ver = mysqli_fetch_array($revisar);
-        echo '<center><form method="post"><table  class="table">
+        echo '<center><form method="post"><table  class=" table">
         <tr class=" table-dark">
         <td>ID</td>
-        <td>CEDULA</td>
         <td>NOMBRE</td>
-        <td>USUARIO</td>
-        <td>CLAVE</td>
-        <td>CORREO</td>
-        <td>TELEFONO</td>
-        <td>TIPO</td>
+        <td>DESCRIPCION</td>
+        <td>ESTADO</td>
         <td colspan="2" align="center">ACCIONES</td>    
         </tr>';
         do {
-            $id = $ver['USUID'];
-            $cedula = $ver['USUCEDULA'];
-            $nombre = $ver['USUNOMBRE'];
-            $usuario = $ver['USUUSUARIO'];
-            $clave = $ver['USUCLAVE'];
-            $correo = $ver['USUCORREO'];
-            $telefono = $ver['USUTELEFONO'];
-            $tipo = $ver['USUTIPO'];
+            $id = $ver['CATID'];
+            $nombre = $ver['CATNOMBRE'];
+            $descripcion = $ver['CATDESCRIPCION'];
+            $estado = $ver['CATESTADO'];
             echo '<tr>
             <td>'.$id.'</td>
-            <td>'.$cedula.'</td>
             <td>'.$nombre.'</td>
-            <td>'.$usuario.'</td>
-            <td>'.$clave.'</td>
-            <td>'.$correo.'</td>
-            <td>'.$telefono.'</td>
-            <td>'.$tipo.'</td>
+            <td>'.$descripcion.'</td>
+            <td>'.$estado.'</td>
             <td align="center"><button class="btn btn-warning" type="submit" value="'.$id.'" name="editar">Editar</button></td>
             <td align="center"><button class="btn btn-danger" type="submit"  value="'.$id.'" name="eliminar">Eliminar</button></td>
             </tr>
@@ -82,7 +70,7 @@
             }
             if (isset($_POST['editar'])) {  
                 $edit = $_POST['editar'];
-                header("Location: edits/editarRegistro.php"); 
+                header("Location: ../edits/editarCategorias.php"); 
             }
     ?>
     </div>
