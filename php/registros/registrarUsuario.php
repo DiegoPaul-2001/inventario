@@ -40,7 +40,7 @@
                     <input type="text" name="telefono" placeholder="Telefono" minlength="0" maxlength="10">                                  
                     <select  class="sele" name="tipo">                            
                             <option value="vendedor">Vendedor</option>
-                            <option value="admin">Administrador</option>
+                            <option value="administrador">Administrador</option>
                     </select>
                     <input type="submit" name="agregar" value="Agregar">
                 </form>

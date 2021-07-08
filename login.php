@@ -28,9 +28,9 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <form onsubmit="event.preventDefault()" class="box">
+                <form method="POST" class="box">
                     <h1>INICIAR SESION</h1>
-                    <p class="text-muted"> Ingrese usuario y contraseña</p> <input type="text" name="" placeholder="Usuario"> <input type="password" name="" placeholder="Contraseña"> <a class="forgot text-muted" href="#">¿Olvidaste tu contraseña?</a> <input type="submit" name="" value="Ingresar" href="#">
+                    <p class="text-muted"> Ingrese usuario y contraseña</p> <input type="text" name="usuario" placeholder="Usuario"> <input type="password" name="contra" placeholder="Contraseña"> <a class="forgot text-muted" href="#">¿Olvidaste tu contraseña?</a> <input type="submit" name="ingresar" value="Ingresar">
                     <div class="col-md-12">
                         <ul class="social-network social-circle">
                             <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
@@ -44,4 +44,24 @@
     </div>
 </div>
 </body>
+<?php
+
+include("php/funciones/funcionUsuarios.php");
+$conexion = conexion();
+if (isset($_POST['ingresar'])) {
+    $usuario = $_POST['usuario'];
+    $contraseña = $_POST['contra'];
+    $ver = buscar($usuario, $contraseña);
+    session_start();
+    $_SESSION['usu'] = $usuario;
+
+    if ($ver > 0) {
+        session_start();
+        header('Location: index.php');
+        $_SESSION['usuario'] = $usuario;
+    } else {
+        echo '<script>alert("USUARIO O CONTRASEÑA INCORRECTA VERIFIQUE...");</script>';
+    }
+}
+?>
 </html>

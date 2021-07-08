@@ -43,6 +43,13 @@
         $unir1 = mysqli_query($conexion, $actualizar);
 	    return $unir1;   
     }
+    function buscarUsuario(string $usuario, string $contra)
+    {                
+        $conexion = conexion();
+        $buscarUsuario = "SELECT USUUSUARIO,USUCLAVE FROM usuarios WHERE USUUSUARIO='$usuario' && USUCLAVE='$contra'";
+        $unir = mysqli_query($conexion, $buscarUsuario);
+	    return $unir;   
+    }
     function buscar(string $nombre)
     {                
         $conexion = conexion();
