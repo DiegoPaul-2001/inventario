@@ -36,6 +36,7 @@ body {
 }
 
 .box input[type="text"],
+.box textarea,
 .box input[type="password"]{
     border: 0;
     background: none;
@@ -71,9 +72,10 @@ body {
 }
 
 .box input[type="text"]:focus,
+.box textarea,
 .box input[type="password"]:focus {
     width: 300px;
-    border-color: #092353
+    border-color: #092353;
 }
 
 .box input[type="submit"] {

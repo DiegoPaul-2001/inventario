@@ -23,7 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
     <link rel="stylesheet" href="../../css/estilos.css">
     
-        <title>Registrar Usuarios</title>
+        <title>Registrar Categorias</title>
 </head>
 <body>
 <div class="container" >
@@ -31,16 +31,12 @@
         <div class="col-md-6" >
             <div class="card" >
                 <form method="POST"  class="box" >
-                    <h1>REGISTRAR USUARIO</h1>
-                    <input type="text" name="cedula" placeholder="Cedula" minlength="0" maxlength="10"> 
-                    <input type="text" name="nombre" placeholder="Nombre"> 
-                    <input type="text" name="usuario" placeholder="Usuario"> 
-                    <input type="password" name="clave" placeholder="Clave"> 
-                    <input type="text" name="correo" placeholder="Correo"> 
-                    <input type="text" name="telefono" placeholder="Telefono" minlength="0" maxlength="10">                                  
+                    <h1>REGISTRAR CATEGORIAS</h1>
+                    <input type="text" name="nombre" placeholder="Nombre de la Categoria" minlength="0" maxlength="10"> 
+                    <textarea type="text" name="descripcion" placeholder="Ingrese una Descripcion de la Categoria"></textarea>
                     <select  class="sele" name="tipo">                            
-                            <option value="vendedor">Vendedor</option>
-                            <option value="administrador">Administrador</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
                     </select>
                     <input type="submit" name="agregar" value="Agregar">
                 </form>
@@ -50,23 +46,19 @@
 </div>
 </body>
 <?php
-    include ("../funciones/funcionUsuarios.php");
+    include ("../funciones/funcionCategorias.php");
     if (isset($_POST['agregar'])) {
-        $cedula = $_POST['cedula'];
         $nombre = $_POST['nombre'];
-        $usuario = $_POST['usuario'];
-        $clave = $_POST['clave'];
-        $correo = $_POST['correo'];
-        $telefono = $_POST['telefono'];
+        $descripcion = $_POST['descripcion'];
         $tipo = $_POST['tipo'];
-        $insertar = insertar($cedula,$nombre,$usuario,$clave,$correo,$telefono,$tipo,'1');
+        $insertar = insertar($nombre,$descripcion,$tipo);
         if ($insertar) {
             echo "
             <script>
             alert('usuario ingresado correctamente');
         </script>
             ";
-            header("Location: ../listas/buscarUsuarios.php");
+            header("Location: ../buscarUsuarios.php");
         }else{
             echo "
             <script>alert('Usuario no ingresado');</script>

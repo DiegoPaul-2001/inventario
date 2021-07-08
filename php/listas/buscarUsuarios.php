@@ -36,7 +36,7 @@
     <a href="javascript:location.reload()"><button class="btn btn-success" type="button">REFRESCAR</button></a>
     <br><br>
     <?php
-        include("funciones/funcionUsuarios.php");
+        include("../funciones/funcionUsuarios.php");
         $conexion = conexion();        
         $revisar = consultarTodos();
         $ver = mysqli_fetch_array($revisar);

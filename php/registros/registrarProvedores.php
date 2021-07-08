@@ -66,7 +66,7 @@
             alert('usuario ingresado correctamente');
         </script>
             ";
-            header("Location: ../listas/buscarUsuarios.php");
+            header("Location: ../buscarUsuarios.php");
         }else{
             echo "
             <script>alert('Usuario no ingresado');</script>
