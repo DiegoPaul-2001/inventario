@@ -111,7 +111,7 @@
                         <input type="text" name="telefono" value="'.$telefono.'" placeholder="Telefono" minlength="0" maxlength="10">                                  
                         <select  class="sele" name="tipo">                            
                                 <option value="vendedor">Vendedor</option>
-                                <option value="admin">Administrador</option>
+                                <option value="administrador">Administrador</option>
                     ';
             }while ( $ver = mysqli_fetch_array($editar));
                 echo '
@@ -134,6 +134,7 @@
                 $telefono = $_POST['telefono'];
                 $tipo = $_POST['tipo'];
                 $editar = actualizar($id,$cedula,$nombre,$usuario,$clave,$correo,$telefono,$tipo,'1');
+                echo ' <scritp> alert('.$editar.')</script>';
         }            
     ?>
     </div>

@@ -29,7 +29,7 @@
     function actualizar(int $id ,string $cedula, string $nombre, string $usuario,string $clave, string $correo, string $telefono, string $tipo, string $borrador)
     {
         $conexion = conexion();       
-        $actualizar = "update usuarios set USUCEDULA=$cedula, USUNOMBRE=$nombre, USUUSUARIO='$usuario', USUCLAVE='$clave', USUCORREO='$correo', USUTELEFONO='$telefono', USUTIPO='$tipo', USUBORRADO='$borrador' where USUID = $id;";
+        $actualizar = "update usuarios set USUCEDULA='$cedula', USUNOMBRE='$nombre', USUUSUARIO='$usuario', USUCLAVE='$clave', USUCORREO='$correo', USUTELEFONO='$telefono', USUTIPO='$tipo', USUBORRADO='$borrador' where USUID = $id;";
         $unir = mysqli_query($conexion, $actualizar);
         return $unir;
     }
