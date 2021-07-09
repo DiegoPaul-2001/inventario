@@ -43,7 +43,7 @@ function buscarPorId(int $id)
 function BuscarTodosBodegas()
 {
     $conexion = conexion();
-    $buscar = "select * from bodegas";
+    $buscar = "select b.bodid,b.bodnombre,b.bodtelefono,b.boddireccion from bodegas b";
     $unir = mysqli_query($conexion, $buscar);
     return $unir;
 }

@@ -74,7 +74,6 @@ include("../php/funciones/funcionBodegas.php");
                         </div>
                         <div class="form-group">
                             <center> <input type="submit" value="Guardar" class="btn  login_btn" name="buscar" id="buscar">
-                                <a href="./formBodegas.php"><button class="btn float-right btn-dark" type="button">ACTUALIZAR</button></a>
                             </center>
                             <?php
                             if (isset($_POST['buscar'])) {

@@ -47,23 +47,20 @@ session_start();
         <td>NOMBRE</td>
         <td>TELEFONO</td>
         <td>DIRECCION</td>
-        <td>ESTADO</td>
         <td colspan="4" align="center">ACCIONES</td>
         
         </tr>';
 
             do {
-                $id = $ver['BODID'];
-                $nombre = $ver['BODNOMBRE'];
-                $telefono = $ver['BODTELEFONO'];
-                $direccion = $ver['BODDIRECCION'];
-                $borrado = $ver['BODBORRADO'];
+                $id = $ver['bodid'];
+                $nombre = $ver['bodnombre'];
+                $telefono = $ver['bodtelefono'];
+                $direccion = $ver['boddireccion'];
                 echo '<tr>
             <td>' . $id . '</td>
             <td>' . $nombre . '</td>
             <td>' . $telefono . '</td>
             <td>' . $direccion . '</td>
-             <td>' . $borrado . '</td>
              <form method="post" action="formModificar.php">
                 <input style="display:none" type="text" value="' . $id . '" name="id" class="form-control" readonly required placeholder="Id"><br>
            <td align="center"><button class="btn btn-warning" type="submit" value="' . $id . '" name="editar">Editar</button></td>
