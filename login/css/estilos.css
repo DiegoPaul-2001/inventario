@@ -1,0 +1,16 @@
+body{
+	background: url(https://image.freepik.com/foto-gratis/ordenador-portatil-mesa-fondo-sala-oficina-montaje-pantalla-grafica_2034-614.jpg);
+    background-size: cover;
+    background-attachment:  fixed;
+	}	
+	#login{
+			border: solid 5px black;
+			border-radius: 10px;
+			width: 300px;
+			height: 400px;
+			padding: 10px;
+			font-size: 20px;
+			color: black;
+			background-color: silver; 
+			margin: auto;
+		}
