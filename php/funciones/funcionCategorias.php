@@ -26,10 +26,10 @@
         $unir = mysqli_query($conexion, $buscarporid);
         return $unir;
     }
-    function actualizar(int $id ,string $nombre,string $descripcion,string $estado,string $borrado)
+    function actualizar(int $id ,string $nombre,string $descripcion,string $estado)
     {
         $conexion = conexion();       
-        $actualizar = "update categorias SET CATNOMBRE= '$nombre',CATDESCRIPCION = '$descripcion', CATESTADO = '$estado', CATBORRADO='$borrador'WHERE CATID = $id";
+        $actualizar = "update categorias SET CATNOMBRE= '$nombre',CATDESCRIPCION = '$descripcion', CATESTADO = '$estado' WHERE CATID = $id";
         $unir = mysqli_query($conexion, $actualizar);
         return $unir;
     }
