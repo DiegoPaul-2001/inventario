@@ -26,6 +26,41 @@
         <title>Registrar Categorias</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand">Brand</a>
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item disabled">
+                    <a class="nav-link" href="../../index.php">INICIO <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../listas/buscarUsuarios.php" tabindex="-1" aria-disabled="true">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="../listas/buscarCategorias.php" tabindex="-1" aria-disabled="true">Categorias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../listas/buscarProductos.php" tabindex="-1" aria-disabled="true">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../listas/buscarProvedores.php" tabindex="-1" aria-disabled="true">Proveedores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../../form/formBodegas.php" tabindex="-1" aria-disabled="true">Bodegas</a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../../form/formRegistro.php" tabindex="-1" aria-disabled="true">Registro Productos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
 <div class="container" >
     <div class="row" >
         <div class="col-md-6" >

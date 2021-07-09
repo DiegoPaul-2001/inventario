@@ -92,14 +92,17 @@ body {
     transition: 0.25s;
     cursor: pointer
 }
-
+p{
+    color: white;
+}
 .box input[type="submit"]:hover {
     background: #000000;
     color:white;
 }
 
 .forgot {
-    text-decoration: underline;
+    color: white;
+    text-decoration: underline;    
 }
 
 ul.social-network {

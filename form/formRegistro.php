@@ -21,17 +21,50 @@ session_start();
     <!--Custom styles-->
     <link rel="stylesheet" type="text/css" href="../css/estilo.css">
     <br>
-    <center>
-        <h1><b style="color: white; background-color:black">FORMULARIO REGISTRO DE PRODUCTOS</h1></b>
-    </center>
+
     <title>ISTVN</title>
 </head>
 <br>
 <br>
-<center> <a href="formInsertRegistro.php."><button class="btn btn-primary" type="submit" value="' . $id . '" name="editar">Agregar Registro</button></a>
-    <br>
+
 
     <body style=" background-size: cover;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">        
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item disabled">
+                    <a class="nav-link" href="../../index.php">INICIO <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../php/listas/buscarUsuarios.php" tabindex="-1" aria-disabled="true">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../php/listas/buscarCategorias.php" tabindex="-1" aria-disabled="true">Categorias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../php/listas/buscarProductos.php" tabindex="-1" aria-disabled="true">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../php/listas/buscarProvedores.php" tabindex="-1" aria-disabled="true">Proveedores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="formBodegas.php" tabindex="-1" aria-disabled="true">Bodegas</a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link active" href="formRegistro.php" tabindex="-1" aria-disabled="true">Registro Productos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <center>
+        <h1><b style="color: white; background-color:black">FORMULARIO REGISTRO DE PRODUCTOS</h1></b>
+    </center>
+    <center> <a href="formInsertRegistro.php."><button class="btn btn-primary" type="submit" value="' . $id . '" name="editar">Agregar Registro</button></a>
+    <br>
 </center>
 <br>
 <br>
