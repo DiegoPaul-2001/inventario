@@ -29,10 +29,11 @@
     function actualizar(int $id ,string $nombre,string $descripcion,string $estado)
     {
         $conexion = conexion();       
-        $actualizar = "update categorias SET CATNOMBRE= $nombre,CATDESCRIPCION = $descripcion, CATESTADO = $estado WHERE CATID = $id";
+        $actualizar = "update categorias SET CATNOMBRE= '$nombre',CATDESCRIPCION = '$descripcion', CATESTADO = '$estado' WHERE CATID = $id";
         $unir = mysqli_query($conexion, $actualizar);
         return $unir;
     }
+
     function eliminar(int $a)
     {
         $conexion = conexion();  

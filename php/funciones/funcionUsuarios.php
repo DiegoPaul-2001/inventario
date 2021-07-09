@@ -29,7 +29,7 @@
     function actualizar(int $id ,string $cedula, string $nombre, string $usuario,string $clave, string $correo, string $telefono, string $tipo, string $borrador)
     {
         $conexion = conexion();       
-        $actualizar = "update usuarios set USUCEDULA=$cedula, USUNOMBRE=$nombre, USUUSUARIO='$usuario', USUCLAVE='$clave', USUCORREO='$correo', USUTELEFONO='$telefono', USUTIPO='$tipo', USUBORRADO='$borrador' where USUID = $id;";
+        $actualizar = "update usuarios set USUCEDULA='$cedula', USUNOMBRE='$nombre', USUUSUARIO='$usuario', USUCLAVE='$clave', USUCORREO='$correo', USUTELEFONO='$telefono', USUTIPO='$tipo', USUBORRADO='$borrador' where USUID = $id;";
         $unir = mysqli_query($conexion, $actualizar);
         return $unir;
     }
@@ -42,15 +42,16 @@
     }
     function buscarUsuario(string $usuario, string $contra)
     {                
-        $conexion = conexion();
+        $conect = conexion();
         $buscarUsuario = "SELECT USUUSUARIO,USUCLAVE FROM usuarios WHERE USUUSUARIO='$usuario' && USUCLAVE='$contra'";
-        $unir = mysqli_query($conexion, $buscarUsuario);
-	    return $unir;   
+        $unir = mysqli_query($conect,$buscarUsuario);
+        $unirA = mysqli_num_rows($unir);
+        return $unirA;  
     }
     function buscar(string $nombre)
     {                
         $conexion = conexion();
-        $buscar = "Select * from usuarios where USUNOMBRE like '$nombre%';";
+        $buscar = "Select * from usuarios where USUNOMBRE like '%$nombre%';";
         $unir = mysqli_query($conexion, $buscar);
 	    return $unir;   
     }

@@ -58,7 +58,7 @@
             alert('usuario ingresado correctamente');
         </script>
             ";
-            header("Location: ../buscarUsuarios.php");
+            header("Location: ../listas/buscarCategorias.php");
         }else{
             echo "
             <script>alert('Usuario no ingresado');</script>

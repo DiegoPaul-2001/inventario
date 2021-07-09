@@ -23,7 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
     <link rel="stylesheet" href="../../css/estilos.css">
     
-        <title>Registrar Usuarios</title>
+        <title>Registrar Provedores</title>
 </head>
 <body>
 <div class="container" >
@@ -31,17 +31,11 @@
         <div class="col-md-6" >
             <div class="card" >
                 <form method="POST"  class="box" >
-                    <h1>REGISTRAR USUARIO</h1>
-                    <input type="text" name="cedula" placeholder="Cedula" minlength="0" maxlength="10"> 
-                    <input type="text" name="nombre" placeholder="Nombre"> 
-                    <input type="text" name="usuario" placeholder="Usuario"> 
-                    <input type="password" name="clave" placeholder="Clave"> 
+                    <h1>REGISTRAR PROVEDORES</h1>
+                    <input type="text" name="nombre" placeholder="Nombre" minlength="0" maxlength="10"> 
+                    <textarea type="text" name="descripcion" placeholder="Descripcion"></textarea>
+                    <input type="text" name="telefono" placeholder="Telefono"> 
                     <input type="text" name="correo" placeholder="Correo"> 
-                    <input type="text" name="telefono" placeholder="Telefono" minlength="0" maxlength="10">                                  
-                    <select  class="sele" name="tipo">                            
-                            <option value="vendedor">Vendedor</option>
-                            <option value="administrador">Administrador</option>
-                    </select>
                     <input type="submit" name="agregar" value="Agregar">
                 </form>
             </div>
@@ -50,23 +44,21 @@
 </div>
 </body>
 <?php
-    include ("../funciones/funcionUsuarios.php");
+    include ("../funciones/funcionProvedores.php");
     if (isset($_POST['agregar'])) {
-        $cedula = $_POST['cedula'];
         $nombre = $_POST['nombre'];
-        $usuario = $_POST['usuario'];
+        $descripcion = $_POST['descripcion'];
         $clave = $_POST['clave'];
         $correo = $_POST['correo'];
         $telefono = $_POST['telefono'];
-        $tipo = $_POST['tipo'];
-        $insertar = insertar($cedula,$nombre,$usuario,$clave,$correo,$telefono,$tipo,'1');
+        $insertar = insertar($nombre,$descripcion,$telefono,$correo);
         if ($insertar) {
             echo "
             <script>
             alert('usuario ingresado correctamente');
         </script>
             ";
-            header("Location: ../buscarUsuarios.php");
+            header("Location: ../listas/buscarProvedores.php");
         }else{
             echo "
             <script>alert('Usuario no ingresado');</script>

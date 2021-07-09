@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../../css/estilos.css">
 
     <title>Lista de Categorias</title>
-</head>
+</head>    
 <body>
     <br>
     <br>
@@ -34,13 +34,14 @@
     <div class="container col-8">
     <a href="../registros/registrarCategorias.php"><button class="btn btn-primary" type="button">AGREGAR</button></a>
     <a href="javascript:location.reload()"><button class="btn btn-success" type="button">REFRESCAR</button></a>
+    <label for="Buscar"> Buscar: </label><input type="text" id="buscar" name="buscar" placeholder="diego">
     <br><br>
     <?php
-        include("../funciones/funcionCategorias.php");
+        include ("../funciones/funcionCategorias.php");
         $conexion = conexion();        
         $revisar = consultarTodos();
         $ver = mysqli_fetch_array($revisar);
-        echo '<center><form method="post"><table  class=" table">
+        echo '<center><form method="post"><table  class="table">
         <tr class=" table-dark">
         <td>ID</td>
         <td>NOMBRE</td>
@@ -67,11 +68,51 @@
             if (isset($_POST['eliminar'])) {     
                 $delete = $_POST['eliminar'];                   
                 $borrar = eliminar($delete);
+                echo "<script>window.location.href='buscarCategorias.php';</script>";                
             }
             if (isset($_POST['editar'])) {  
-                $edit = $_POST['editar'];
-                header("Location: ../edits/editarCategorias.php"); 
+                $edit = $_POST['editar']; 
+                $editar = buscarPorId($edit);
+                $ver = mysqli_fetch_array($editar);
+                echo '
+                <div class="container" >
+                <div class="row" >
+                    <div class="col-md-6" >
+                        <div class="card" >
+                            <form method="POST"  class="box" >
+                                <h1>EDITAR CATEGORIAS</h1>
+                ';
+                do {
+                    $id = $ver['CATID'];
+                    $nombre = $ver['CATNOMBRE'];
+                    $descripcion = $ver['CATDESCRIPCION'];
+                    echo '
+                        <input type="text" name="id"  value="'.$id.'" placeholder="Nombre"> 
+                        <input type="text" name="nombre" value="'.$nombre.'" placeholder="Nombre"> 
+                        <textarea type="text" name="descripcion" placeholder="Descripcion">'.$descripcion.'</textarea> 
+                        <select  class="sele" name="tipo">                            
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                    ';
+            }while ( $ver = mysqli_fetch_array($editar));
+                echo '
+                        </select>
+                        <input type="submit" name="modificar" value="Modificar">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                ';  
             }
+            if(isset($_POST['modificar'])){
+                $id = $_POST['id'];
+                $nombre = $_POST['nombre'];
+                $descripcion = $_POST['descripcion'];
+                $estado = $_POST['tipo'];
+                $editar = actualizar($id,$nombre,$descripcion,$estado);
+                echo "<script>window.location.href='buscarCategorias.php';</script>";                
+        }            
     ?>
     </div>
 </body>

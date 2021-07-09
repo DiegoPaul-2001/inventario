@@ -47,20 +47,17 @@
 <?php
 
 include("php/funciones/funcionUsuarios.php");
-$conexion = conexion();
 if (isset($_POST['ingresar'])) {
+    $conexion = conexion();
     $usuario = $_POST['usuario'];
-    $contraseña = $_POST['contra'];
-    $ver = buscar($usuario, $contraseña);
-    session_start();
-    $_SESSION['usu'] = $usuario;
-
-    if ($ver > 0) {
+    $contra = $_POST['contra'];
+    $ver = buscarUsuario($usuario, $contra);
+    if ($ver) {                  
         session_start();
-        header('Location: index.php');
         $_SESSION['usuario'] = $usuario;
+        header("Location: index.php");
     } else {
-        echo '<script>alert("USUARIO O CONTRASEÑA INCORRECTA VERIFIQUE...");</script>';
+        echo '<script>alert("Usuario ingresado no existe, verifique");</script>';
     }
 }
 ?>
