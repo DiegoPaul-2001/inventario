@@ -44,7 +44,8 @@
            <label for=""> Tipo: </label> '.$tipo.'
            ';
     ?>
-        <center><h1 >SISTEMA ACADEMICO</h1></center>
+        <center><h1 >INVENTARIO FERRETERIA</h1></center>
+        <center><h1 style="color:black;">Bienvenido: <?php echo $usuario;?></h1></center>
        <center><div class="container row espacio">
         <a class="col-6 espacio t1" href="php/listas/buscarCategorias.php"><button class="btn col-12 boton" type="button"> LISTADO DE CATEGORIAS</button></a><br>
             <a class="col-6 espacio t1" href="php/listas/buscarProductos.php"><button class="btn col-12 boton" type="button"> LISTADO DE PRODUCTOS</button></a>   <br> 
@@ -52,19 +53,16 @@
             <a class="col-6 espacio t1" href="php/listas/buscarUsuarios.php"><button class="btn col-12 boton" type="button"> LISTADO DE USUARIOS</button></a><br>
         </div></center>
     <?php    
-        }else{    
-            echo '
-           <label for=""> Bienvenido: </label> '.$usuario.'
-           <label for=""> Tipo: </label> '.$tipo.'
-           ';
+        }else{                
     ?>  
-         <h1 > SISTEMA ACADEMICO</h1>   
-        <div class="container row espacio">
-            <a class="col-5 espacio t1" href="php/listas/buscarCategorias.php"><button class="btn col-12 boton" type="button"> LISTADO DE CATEGORIAS</button></a><br>
-            <a class="col-5 espacio t1" href="php/listas/buscarProductos.php"><button class="btn col-12 boton" type="button"> LISTADO DE PRODUCTOS</button></a>   <br> 
-            <a class="col-5 espacio t1" href="php/listas/buscarProvedores.php"><button class="btn col-12 boton" type="button"> LISTADO DE PROVEEDORES</button></a><br>
-            <a class="col-5 espacio t1" href="php/listas/buscarUsuarios.php"><button class="btn col-12 boton" type="button"> LISTADO DE USUARIOS</button></a><br>            
-        </div>
+       <center><h1 >INVENTARIO FERRETERIA</h1></center>
+       <center><h1>Bienvenido: <?php echo $usuario;?></h1></center>
+       <center><div class="container row espacio">
+            <a class="col-6 espacio t1" href="php/listas/buscarCategorias.php"><button class="btn col-12 boton" type="button"> LISTADO DE CATEGORIAS</button></a><br>
+            <a class="col-6 espacio t1" href="php/listas/buscarProductos.php"><button class="btn col-12 boton" type="button"> LISTADO DE PRODUCTOS</button></a>   <br> 
+            <a class="col-6 espacio t1" href="php/listas/buscarProvedores.php"><button class="btn col-12 boton" type="button"> LISTADO DE PROVEEDORES</button></a><br>
+            <a class="col-6 espacio t1" href="php/listas/buscarUsuarios.php"><button class="btn col-12 boton" type="button"> LISTADO DE USUARIOS</button></a><br>            
+        </div></center>
     <?php        
         }
     ?>
