@@ -125,7 +125,7 @@
                 ';  
             }
             if(isset($_POST['modificar'])){
-    
+                $id = $_POST['id'];
                 $cedula = $_POST['cedula'];
                 $nombre = $_POST['nombre'];
                 $usuario = $_POST['usuario'];
