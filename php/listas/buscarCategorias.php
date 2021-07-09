@@ -32,7 +32,7 @@
     <br>
     <br>
     <div class="container col-8">
-    <a href="../registros/registrarUsuario.php"><button class="btn btn-primary" type="button">AGREGAR</button></a>
+    <a href="../registros/registrarCategorias.php"><button class="btn btn-primary" type="button">AGREGAR</button></a>
     <a href="javascript:location.reload()"><button class="btn btn-success" type="button">REFRESCAR</button></a>
     <label for="Buscar"> Buscar: </label><input type="text" id="buscar" name="buscar" placeholder="diego">
     <br><br>
@@ -110,7 +110,7 @@
                 $nombre = $_POST['nombre'];
                 $descripcion = $_POST['descripcion'];
                 $estado = $_POST['tipo'];
-                $editar = actualizar($id,$nombre,$descripcion,$estado,'1');
+                $editar = actualizar($id,$nombre,$descripcion,$estado   );
                 echo "<script>window.location.href='buscarCategorias.php';</script>";                
 
         }            
