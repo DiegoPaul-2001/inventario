@@ -25,6 +25,21 @@
     
         <title>Registrar Provedores</title>
 </head>
+<script>
+    function guardar() {
+            let nombre = document.getElementById('nombre').value;
+            let descripcion = document.getElementById('descripcion').value;
+            let telefono = document.getElementById('telefono').value;
+            let correo = document.getElementById('correo').value;
+            let xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+               alert(this.responseText);               
+            }
+            xhttp.open("GET", "../../webService/cliente/cliente.php?accion=guardar&nombre=" + nombre+"&descripcion="+descripcion+"&telefono="+telefono+"&correo="+correo);
+            xhttp.send();
+        }
+
+</script>   
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand">Brand</a>
@@ -67,10 +82,10 @@
             <div class="card" >
                 <form method="POST"  class="box" >
                     <h1>REGISTRAR PROVEDORES</h1>
-                    <input type="text" name="nombre" placeholder="Nombre" minlength="0" maxlength="10"> 
-                    <textarea type="text" name="descripcion" placeholder="Descripcion"></textarea>
-                    <input type="text" name="telefono" placeholder="Telefono"> 
-                    <input type="text" name="correo" placeholder="Correo"> 
+                    <input type="text" name="nombre" placeholder="Nombre" id="nombre" minlength="0" maxlength="10"> 
+                    <textarea type="text" name="descripcion" id="descripcion" placeholder="Descripcion"></textarea>
+                    <input type="text" name="telefono" id="telefono" placeholder="Telefono"> 
+                    <input type="text" name="correo" id="correo" placeholder="Correo"> 
                     <input type="submit" name="agregar" value="Agregar">
                 </form>
             </div>

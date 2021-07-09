@@ -25,7 +25,8 @@
     <link rel="stylesheet" href="../../css/estilos.css">
 
     <title>Lista de Productos</title>
-</head>    
+</head> 
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand">Brand</a>

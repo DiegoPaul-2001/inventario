@@ -1,0 +1,87 @@
+<!--  
+(c) ISTVN
+2021-07-09
+INSERT
+
+Online WSDL 1.1 SOAP generator 0.2
+Julien Blitte
+  -->
+<definitions xmlns:tns="http://localhost.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://localhost.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="INSERT" targetNamespace="http://localhost.wsdl">
+<!--  definition of datatypes  -->
+<types>
+<schema xmlns="http://www.w3.org/2000/10/XMLSchema" targetNamespace="http://localhost.xsd">
+<element name="res">
+<complexType>
+<all>
+<element name="value" type="int"/>
+</all>
+</complexType>
+</element>
+<element name="nombre">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="descripcion">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="telefono">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="correo">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+</schema>
+</types>
+<!--  response messages  -->
+<message name="returns_res">
+<part name="res" type="xsd:res"/>
+</message>
+<!--  request messages  -->
+<message name="insertar">
+<part name="nombre" type="xsd:nombre"/>
+<part name="descripcion" type="xsd:descripcion"/>
+<part name="telefono" type="xsd:telefono"/>
+<part name="correo" type="xsd:correo"/>
+</message>
+<!--  server's services  -->
+<portType name="Insertar Provedor">
+<operation name="insertar">
+<input message="tns:insertar"/>
+<output message="tns:returns_res"/>
+</operation>
+</portType>
+<!--  server encoding  -->
+<binding name="Insertar Provedor_webservices" type="tns:Insertar Provedor">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+<operation name="insertar">
+<soap:operation soapAction="urn:xmethods-delayed-quotes#insertar"/>
+<input>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</output>
+</operation>
+</binding>
+<!--  access to service provider  -->
+<service name="ISTVN">
+<port name="ISTVN_0" binding="Insertar Provedor_webservices">
+<soap:address location="http://localhost/inventario/webService/server/server.php"/>
+</port>
+</service>
+</definitions>
