@@ -24,11 +24,12 @@ session_start();
 
     <title>ISTVN</title>
 </head>
+<br>
+<br>
 
 
-<body style=" background-size: cover;">
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand">Brand</a>
+    <body style=" background-size: cover;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">        
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -50,20 +51,19 @@ session_start();
                     <a class="nav-link disabled" href="../php/listas/buscarProvedores.php" tabindex="-1" aria-disabled="true">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="formBodegas.php" tabindex="-1" aria-disabled="true">Bodegas</a>
+                    <a class="nav-link disabled" href="formBodegas.php" tabindex="-1" aria-disabled="true">Bodegas</a>
                 </li>                
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="formRegistro.php" tabindex="-1" aria-disabled="true">Registro Productos</a>
+                    <a class="nav-link active" href="formRegistro.php" tabindex="-1" aria-disabled="true">Registro Productos</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <br><br>
-    <center>
-        <h1><b style="color: white; background-color:black">FORMULARIO BODEGAS</b>
-    </center>
     <br>
-<center> <a href="formInsertBodegas.php."><button class="btn btn-primary" type="submit" value="' . $id . '" name="editar">Agregar Bodega</button></a></td>
+    <center>
+        <h1><b style="color: white; background-color:black">FORMULARIO REGISTRO DE PRODUCTOS</h1></b>
+    </center>
+    <center> <a href="formInsertRegistro.php."><button class="btn btn-primary" type="submit" value="' . $id . '" name="editar">Agregar Registro</button></a>
     <br>
 </center>
 <br>
@@ -72,30 +72,36 @@ session_start();
     <div>
         <center>
             <?php
-            include("../php/funciones/funcionBodegas.php");
-            $revisar = BuscarTodosBodegas();
+            include("../php/funciones/funcionRegistro.php");
+            $revisar = BuscarTodosRegistro();
             $ver = mysqli_fetch_array($revisar);
-            echo '<b style>><table  class ="table table-dark table-striped col-10" ,class="">
+            echo '<b style><table  class ="table table-dark table-striped col-10" ,class="">
         <tr class=" table-dark ">
         <td>ID</td>
-        <td>NOMBRE</td>
-        <td>TELEFONO</td>
-        <td>DIRECCION</td>
-        <td colspan="4" align="center">ACCIONES</td>
+        <td>BODEGA</td>
+        <td>PRODUCTO</td>
+        <td>USUARIO</td>
+        <td>CANTIDAD</td>
+        <td>FECHA</td>
+        <td colspan="8" align="center">ACCIONES</td>
         
         </tr>';
 
             do {
-                $id = $ver['bodid'];
-                $nombre = $ver['bodnombre'];
-                $telefono = $ver['bodtelefono'];
-                $direccion = $ver['boddireccion'];
+                $id = $ver['regid'];
+                $idBod = $ver['bodnombre'];
+                $idPro = $ver['pronombre'];
+                $idUsu = $ver['usunombre'];
+                $cantidad = $ver['regcantidad'];
+                $fecha = $ver['regfecha'];
                 echo '<tr>
             <td>' . $id . '</td>
-            <td>' . $nombre . '</td>
-            <td>' . $telefono . '</td>
-            <td>' . $direccion . '</td>
-             <form method="post" action="formModificar.php">
+            <td>' . $idBod . '</td>
+            <td>' . $idPro . '</td>
+            <td>' . $idUsu . '</td>
+            <td>' . $cantidad . '</td>
+            <td>' . $fecha . '</td>
+             <form method="post" action="formModificarRegistro.php">
                 <input style="display:none" type="text" value="' . $id . '" name="id" class="form-control" readonly required placeholder="Id"><br>
            <td align="center"><button class="btn btn-warning" type="submit" value="' . $id . '" name="editar">Editar</button></td>
             </form>
@@ -113,7 +119,7 @@ session_start();
             }
             if (isset($_POST['editar'])) {
                 $edit = $_POST['editar'];
-                header("Location:formModificar.php");
+                header("Location:formModificarRegistro.php");
             }
             ?>
 

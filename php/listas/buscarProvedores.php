@@ -27,6 +27,37 @@
     <title>Lista de Provedores</title>
 </head>    
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand">Brand</a>
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../../index.php">INICIO <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="buscarUsuarios.php" tabindex="-1" aria-disabled="true">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="buscarCategorias.php" tabindex="-1" aria-disabled="true">Categorias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="buscarProductos.php" tabindex="-1" aria-disabled="true">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="buscarProvedores.php" tabindex="-1" aria-disabled="true">Proveedores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../../form/formBodegas.php" tabindex="-1" aria-disabled="true">Bodegas</a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="../../form/formRegistro.php" tabindex="-1" aria-disabled="true">Registro Productos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <br>
     <br>
     <br>
@@ -92,7 +123,7 @@
                     $telefono = $ver['PRVTELEFONO'];
                     $correo = $ver['PRVCORREO'];
                     echo '
-                        <input type="text" name="id"  value="'.$id.'" placeholder="Nombre"> 
+                        <input type="text" name="id"  value="'.$id.'" readonly placeholder="Nombre"> 
                         <input type="text" name="nombre" value="'.$nombre.'" placeholder="Nombre"> 
                         <textarea type="text" name="descripcion" placeholder="Descripcion">'.$descripcion.'</textarea>
                         <input type="text" name="telefono" value="'.$telefono.'" placeholder="Telefono"> 

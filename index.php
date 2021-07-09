@@ -44,33 +44,37 @@
            <label for=""> Tipo: </label> '.$tipo.'
            ';
     ?>
-        <h1 > SISTEMA ACADEMICO</h1>   
-        <div class="container row espacio">
-            <a class="col-5 espacio t1" href="php/buscarEstudiantes.php"><button class="btn col-12 boton" type="button"> LISTADO DE ESTUDIANTES</button></a><br>
-            <a class="col-5 espacio t1" href="php/buscarDocentes.php"><button class="btn col-12 boton" type="button"> LISTADO DE DOCENTES</button></a>   <br> 
-            <a class="col-5 espacio t1" href="php/buscarCursos.php"><button class="btn col-12 boton" type="button"> LISTADO DE CARRERAS</button></a><br>
-            <a class="col-5 espacio t1" href="php/buscarCursos.php"><button class="btn col-12 boton" type="button"> LISTADO DE CURSOS</button></a><br>
-            <a class="col-5 espacio t1" href="php/buscarAsignatura.php"><button class="btn col-12 boton" type="button"> LISTADO DE ASIGNATURA</button></a><br>
-            <a class="col-5 espacio t1" href="php/buscarMatricula.php"><button class="btn col-12 boton" type="button"> LISTADO DE MATRICULA</button></a><br>
-            <a class="col-5 espacio t1" href="php/buscarDetalle.php"><button class="btn col-12 boton" type="button"> LISTADO DE DETALLE</button></a><br>
-            <a class="col-5 espacio t1" href="php/buscarCalificaciones.php"><button class="btn col-12 boton" type="button"> LISTADO DE CALIFICACIONES</button></a><br>
-        </div>
+        <center><h1 >INVENTARIO FERRETERIA</h1></center>
+        <center><h1>Bienvenido: <?php echo $usuario;?></h1></center>
+       <center><div class="container row espacio">
+        <a class="col-6 espacio t1" href="php/listas/buscarCategorias.php"><button class="btn col-12 boton" type="button"> LISTADO DE CATEGORIAS</button></a><br>
+            <a class="col-6 espacio t1" href="php/listas/buscarProductos.php"><button class="btn col-12 boton" type="button"> LISTADO DE PRODUCTOS</button></a>   <br> 
+            <a class="col-6 espacio t1" href="php/listas/buscarProvedores.php"><button class="btn col-12 boton" type="button"> LISTADO DE PROVEEDORES</button></a><br>
+            <a class="col-6 espacio t1" href="php/listas/buscarUsuarios.php"><button class="btn col-12 boton" type="button"> LISTADO DE USUARIOS</button></a><br>
+            <a class="col-6 espacio t1" href="form/formBodegas.php"><button class="btn col-12 boton" type="button"> LISTADO DE BODEGAS</button></a><br>
+            <a class="col-6 espacio t1" href="form/formRegistro.php"><button class="btn col-12 boton" type="button"> LISTADO DE REGISTRO DE PRODUCTOS</button></a><br>
+        </div></center>
     <?php    
-        }else{    
-            echo '
-           <label for=""> Bienvenido: </label> '.$usuario.'
-           <label for=""> Tipo: </label> '.$tipo.'
-           ';
+        }else{                
     ?>  
-         <h1 > SISTEMA ACADEMICO</h1>   
-        <div class="container row espacio">
-            <a class="col-5 espacio t1" href="php/buscarEstudiantes.php"><button class="btn col-12 boton" type="button"> LISTADO DE ESTUDIANTES</button></a><br>
-            <a class="col-5 espacio t1" href="php/buscarDocentes.php"><button class="btn col-12 boton" type="button"> LISTADO DE DOCENTES</button></a>   <br> 
-            <a class="col-5 espacio t1" href="php/buscarCursos.php"><button class="btn col-12 boton" type="button"> LISTADO DE CARRERAS</button></a><br>
-            <a class="col-5 espacio t1" href="php/buscarCursos.php"><button class="btn col-12 boton" type="button"> LISTADO DE CURSOS</button></a><br>
-            <a class="col-5 espacio t1" href="php/buscarAsignatura.php"><button class="btn col-12 boton" type="button"> LISTADO DE ASIGNATURA</button></a><br>            
-        </div>
+       <center><h1 >INVENTARIO FERRETERIA</h1></center>
+       <center><h1>Bienvenido: <?php echo $usuario;?></h1></center>
+       <center><div class="container row espacio">
+            <a class="col-6 espacio t1" href="php/listas/buscarCategorias.php"><button class="btn col-12 boton" type="button"> LISTADO DE CATEGORIAS</button></a><br>
+            <a class="col-6 espacio t1" href="php/listas/buscarProductos.php"><button class="btn col-12 boton" type="button"> LISTADO DE PRODUCTOS</button></a><br> 
+            <a class="col-6 espacio t1" href="php/listas/buscarProvedores.php"><button class="btn col-12 boton" type="button"> LISTADO DE PROVEEDORES</button></a><br>
+            <a class="col-6 espacio t1" href="php/listas/buscarUsuarios.php"><button class="btn col-12 boton" type="button"> LISTADO DE USUARIOS</button></a><br>            
+            <a class="col-6 espacio t1" href="php/listas/buscarUsuarios.php"><button class="btn col-12 boton" type="button"> LISTADO DE REGISTRO DE PRODUCTOS</button></a><br>
+        </div></center>
     <?php        
+        }
+    ?>
+    <br><br>
+    <form action="" style="float: right;" method="post"><button class="btn btn-danger" name="cerrar" type="submit">CERRAR SESION</button></form> 
+    <?php
+        if (isset($_POST['cerrar'])) {        
+            session_destroy();
+            header("Location: login.php");
         }
     ?>
 </body>

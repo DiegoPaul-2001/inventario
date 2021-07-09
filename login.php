@@ -30,7 +30,7 @@
             <div class="card">
                 <form method="POST" class="box">
                     <h1>INICIAR SESION</h1>
-                    <p class="text-muted"> Ingrese usuario y contraseña</p> <input type="text" name="usuario" placeholder="Usuario"> <input type="password" name="contra" placeholder="Contraseña"> <a class="forgot text-muted" href="#">¿Olvidaste tu contraseña?</a> <input type="submit" name="ingresar" value="Ingresar">
+                    <p class="" > Ingrese usuario y contraseña</p> <input type="text" name="usuario" placeholder="Usuario"> <input type="password" name="contra" placeholder="Contraseña"> <a class="forgot " href="#">¿Olvidaste tu contraseña?</a> <input type="submit" name="ingresar" value="Ingresar">
                     <div class="col-md-12">
                         <ul class="social-network social-circle">
                             <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>

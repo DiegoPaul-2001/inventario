@@ -8,7 +8,7 @@ function conexion()
     $conectar = mysqli_connect($servidor, $usuario, $clave, $basedatos) or die("conexion fallida");
     return $conectar;
 }
-function insertCursos($nombre, $telefono, $direccion, $borrado)
+function insertBodegas($nombre, $telefono, $direccion, $borrado)
 {
     $conexion = conexion();
     $query = ("Insert into bodegas values(0,'$nombre','$telefono','$direccion','$borrado')");
@@ -16,7 +16,7 @@ function insertCursos($nombre, $telefono, $direccion, $borrado)
     return $r;
 }
 
-function modificarCursos($id, $nombre, $telefono, $direccion, $borradoo)
+function modificarBodegas($id, $nombre, $telefono, $direccion, $borradoo)
 {
     $conexion = conexion();
     $actualizar = ("update bodegas set bodnombre='$nombre', bodtelefono='$telefono',boddireccion='$direccion',bodborrado='$borradoo' where bodid='$id'");
@@ -24,7 +24,7 @@ function modificarCursos($id, $nombre, $telefono, $direccion, $borradoo)
     return $unir;
 }
 
-function eliminarCursos($id)
+function eliminarBodegas($id)
 {
     $conexion = conexion();
     $query = ("delete from bodegas where bodid='$id'");
@@ -40,10 +40,10 @@ function buscarPorId(int $id)
     return $unir;
 }
 
-function BuscarTodosCursos()
+function BuscarTodosBodegas()
 {
     $conexion = conexion();
-    $buscar = "select * from bodegas";
+    $buscar = "select b.bodid,b.bodnombre,b.bodtelefono,b.boddireccion from bodegas b";
     $unir = mysqli_query($conexion, $buscar);
     return $unir;
 }
