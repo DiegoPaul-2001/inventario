@@ -170,3 +170,60 @@ form{
     box-shadow:20px 20px 20px rgb(25, 25, 56);
     filter: shadow(color=rgb(25, 25, 56), direction=135, strength=2);
   }
+
+h1 {
+    font-weight: bold;
+    font-size: 42px;
+    font-family: "Arial";
+    text-shadow: 0 1px 0 #ccc, 
+                 0 2px 0 #c9c9c9,
+                 0 3px 0 #bbb,
+                 0 4px 0 #b9b9b9,
+                 0 5px 0 #aaa,
+                 0 6px 1px rgba(0,0,0,.1),
+                 0 0 5px rgba(0,0,0,.1),
+                 0 1px 3px rgba(0,0,0,.3),
+                 0 3px 5px rgba(0,0,0,.2),
+                 0 5px 10px rgba(0,0,0,.25),
+                 0 10px 10px rgba(0,0,0,.2),
+                 0 20px 20px rgba(0,0,0,.15);
+    color: #FFF;
+    text-align: center;
+  }
+  table {
+    -webkit-box-shadow: 4px 4px 15px rgb(48, 3, 100);
+    box-shadow:4px 4px 15px rgb(48, 3, 100);
+    filter: shadow(color=rgb(48, 3, 100), direction=135, strength=2);
+  }
+  nav{
+    -webkit-box-shadow: 10px 10px 15px rgb(25, 25, 56);
+    box-shadow: 10px 10px 15px rgb(25, 25, 56);
+    filter: shadow(color=rgb(25, 25, 56), direction=135, strength=2);
+  }
+  form{
+    -webkit-box-shadow: 4px 4px 15px rgb(25, 25, 56);
+    box-shadow:4px 4px 15px rgb(25, 25, 56);
+    filter: shadow(color=rgb(25, 25, 56), direction=135, strength=2);
+  }
+  .t1:hover {
+    color:rgb(50, 17, 243);
+   -webkit-transform:scale(1.5);
+   transform:scale(1.5);
+   overflow:hidden;
+  }
+  li:hover {
+    color:rgb(0, 0, 0);
+   -webkit-transform:scale(1.5);
+   transform:scale(1.5);
+   overflow:hidden;
+  }
+  .boton{
+    background: rgba(255, 135, 135);
+    background: -moz-linear-gradient(top, rgb(255, 135, 135) 0%, rgb(192, 32, 99) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 135, 135)), color-stop(100%, rgba(192, 32, 99)));
+    background: -webkit-linear-gradient(top, rgba(255, 135, 135) 0%, rgba(192, 32, 99) 100%);
+    background: -o-linear-gradient(top, rgba(255, 135, 135) 0%, rgba(192, 32, 99) 100%);
+    background: -ms-linear-gradient(top, rgba(255, 135, 135) 0%, rgba(192, 32, 99) 100%);
+    background: linear-gradient(to bottom, rgba(255, 135, 135) 0%, rgba(192, 32, 99) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#639bc9', endColorstr='#044080', GradientType=0 );        
+  } 

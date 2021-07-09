@@ -25,18 +25,19 @@
     <link rel="stylesheet" href="../css/estilos.css">
 
     <title>Document</title>
-</head>
+</head>    
 <body>
     <br>
     <br>
     <br>
     <br>
     <div class="container col-8">
-    <a href="registros/registrarUsuario.php"><button class="btn btn-primary" type="button">AGREGAR</button></a>
+    <a href="../registros/registrarUsuario.php"><button class="btn btn-primary" type="button">AGREGAR</button></a>
     <a href="javascript:location.reload()"><button class="btn btn-success" type="button">REFRESCAR</button></a>
+    <label for="Buscar"> Buscar: </label><input type="text" id="buscar" name="buscar" placeholder="diego">
     <br><br>
     <?php
-        include("../funciones/funcionUsuarios.php");
+        include ("../funciones/funcionUsuarios.php");
         $conexion = conexion();        
         $revisar = consultarTodos();
         $ver = mysqli_fetch_array($revisar);
@@ -78,12 +79,62 @@
             echo '</table></form></center>';                  
             if (isset($_POST['eliminar'])) {     
                 $delete = $_POST['eliminar'];                   
-                $borrar = eliminar($delete);
+                $borrar = eliminar($delete);                
             }
             if (isset($_POST['editar'])) {  
-                $edit = $_POST['editar'];
-                header("Location: ../edits/editarRegistro.php"); 
+                $edit = $_POST['editar']; 
+                $editar = buscarPorId($edit);
+                $ver = mysqli_fetch_array($editar);
+                echo '
+                <div class="container" >
+                <div class="row" >
+                    <div class="col-md-6" >
+                        <div class="card" >
+                            <form method="POST"  class="box" >
+                                <h1>REGISTRAR USUARIO</h1>
+                ';
+                do {
+                    $id = $ver['USUID'];
+                    $cedula = $ver['USUCEDULA'];
+                    $nombre = $ver['USUNOMBRE'];
+                    $usuario = $ver['USUUSUARIO'];
+                    $clave = $ver['USUCLAVE'];
+                    $correo = $ver['USUCORREO'];
+                    $telefono = $ver['USUTELEFONO'];                
+                    echo '
+                        <input type="text" name="id"  value="'.$id.'" placeholder="Nombre"> 
+                        <input type="text" name="cedula"  value="'.$cedula.'" placeholder="Cedula" minlength="0" maxlength="10"> 
+                        <input type="text" name="nombre" value="'.$nombre.'" placeholder="Nombre"> 
+                        <input type="text" name="usuario" value="'.$usuario.'" placeholder="Usuario"> 
+                        <input type="password" name="clave" value="'.$clave.'" placeholder="Clave"> 
+                        <input type="text" name="correo" value="'.$correo.'" placeholder="Correo"> 
+                        <input type="text" name="telefono" value="'.$telefono.'" placeholder="Telefono" minlength="0" maxlength="10">                                  
+                        <select  class="sele" name="tipo">                            
+                                <option value="vendedor">Vendedor</option>
+                                <option value="admin">Administrador</option>
+                    ';
+            }while ( $ver = mysqli_fetch_array($editar));
+                echo '
+                        </select>
+                        <input type="submit" name="modificar" value="Modificar">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                ';  
             }
+            if(isset($_POST['modificar'])){
+    
+                $cedula = $_POST['cedula'];
+                $nombre = $_POST['nombre'];
+                $usuario = $_POST['usuario'];
+                $clave = $_POST['clave'];
+                $correo = $_POST['correo'];
+                $telefono = $_POST['telefono'];
+                $tipo = $_POST['tipo'];
+                $editar = actualizar($id,$cedula,$nombre,$usuario,$clave,$correo,$telefono,$tipo,'1');
+        }            
     ?>
     </div>
 </body>
