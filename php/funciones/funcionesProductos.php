@@ -15,18 +15,18 @@
     }        
     function consultarTodos(){
         $conexion = conexion();
-        $buscar = "select PROID,CATID,PRVID,PROCODIGO,PRONOMBRE,PROVALOR,PORVALTIPO,PROESTADO,PROBORRADO FROM productos WHERE PROBORRADO = 1";
+        $buscar = "select P.PROID,P.PROCODIGO,P.PRONOMBRE,C.CATNOMBRE,PR.PRVNOMBRE,P.PROVALOR,P.PORVALTIPO,P.PROESTADO FROM productos P,CATEGORIAS C,PROVEDOR PR WHERE P.CATID = C.CATID AND P.PRVID = PR.PRVID AND P.PROBORRADO = 1";
         $unir = mysqli_query($conexion, $buscar);
 	    return $unir;        
     }
     function buscarPorId(int $id)
     {                
         $conexion = conexion();       
-        $buscarporid = "select PROID,CATID,PRVID,PROCODIGO,PRONOMBRE,PROVALOR,PORVALTIPO,PROESTADO,PROBORRADO FROM productos WHERE PROID = $id;";
+        $buscarporid = "select P.PROID,P.PROCODIGO,P.PRONOMBRE,C.CATNOMBRE,PR.PRVNOMBRE,P.PROVALOR,P.PORVALTIPO,P.PROESTADO FROM productos P,CATEGORIAS C,PROVEDOR PR WHERE P.CATID = C.CATID AND P.PRVID = PR.PRVID AND P.PROID =  $id;";
         $unir = mysqli_query($conexion, $buscarporid);
         return $unir;
     }
-    function actualizar(int $categoria,int $provedor, string $codigo,string $nombre,double $valor,string $valTipo,string $estado)
+    function actualizar($id,$categoria,$provedor,$codigo,$nombre,$valor,$valTipo,$estado)
     {
         $conexion = conexion();       
         $actualizar = "update productos SET CATID = $categoria,PRVID=$provedor,PROCODIGO='$codigo',`PRONOMBRE`='$nombre',PROVALOR='$valor',PORVALTIPO='$valTipo',PROESTADO='$estado'WHERE PROID =  $id";

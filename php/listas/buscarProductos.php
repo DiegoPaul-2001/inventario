@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
     <link rel="stylesheet" href="../../css/estilos.css">
 
-    <title>Lista de Categorias</title>
+    <title>Lista de Productos</title>
 </head>    
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -62,5 +62,136 @@
     <br>
     <br>
     <br>
+    <div class="container col-8">
+    <a href="../registros/registrarProducto.php"><button class="btn btn-primary" type="button">AGREGAR</button></a>
+    <a href="javascript:location.reload()"><button class="btn btn-success" type="button">REFRESCAR</button></a>
+    <label for="Buscar"> Buscar: </label><input type="text" id="buscar" name="buscar" placeholder="diego">
+    <br><br>
+    <?php
+        include ("../funciones/funcionesProductos.php");
+        $conexion = conexion();        
+        $revisar = consultarTodos();
+        $ver = mysqli_fetch_array($revisar);
+        echo '<center><form method="post"><table  class="table">
+        <tr class=" table-dark">
+        <td>ID</td>
+        <td>CODIGO</td>
+        <td>NOMBRE</td>
+        <td>CATEGORIA</td>
+        <td>PROVEDOR</td>
+        <td>VALOR</td>
+        <td>VAL.TIPO</td>
+        <td>ESTADO</td>
+        <td colspan="2" align="center">ACCIONES</td>    
+        </tr>';
+        do {
+            $id = $ver['PROID'];
+            $categoria = $ver['CATNOMBRE'];
+            $provedor = $ver['PRONOMBRE'];
+            $nombre = $ver['PRONOMBRE'];
+            $codigo = $ver['PROCODIGO'];
+            $valor = $ver['PROVALOR'];
+            $tipVa = $ver['PORVALTIPO'];
+            $estado = $ver['PROESTADO'];
+            echo '<tr>
+            <td>'.$id.'</td>
+            <td>'.$codigo.'</td>
+            <td>'.$nombre.'</td>
+            <td>'.$categoria.'</td>
+            <td>'.$provedor.'</td>
+            <td>'.$valor.'</td>
+            <td>'.$tipVa.'</td>
+            <td>'.$estado.'</td>
+            <td align="center"><button class="btn btn-warning" type="submit" value="'.$id.'" name="editar">Editar</button></td>
+            <td align="center"><button class="btn btn-danger" type="submit"  value="'.$id.'" name="eliminar">Eliminar</button></td>
+            </tr>
+            ';
+        }while ( $ver = mysqli_fetch_array($revisar));
+            echo '</table></form></center>';                  
+            if (isset($_POST['eliminar'])) {     
+                $delete = $_POST['eliminar'];                   
+                $borrar = eliminar($delete);
+                echo "<script>window.location.href='buscarProductos.php';</script>";                
+            }
+            if (isset($_POST['editar'])) {  
+                $edit = $_POST['editar']; 
+                $editar = buscarPorId($edit);
+                $ver = mysqli_fetch_array($editar);
+                echo '
+                <div class="container" >
+                <div class="row" >
+                    <div class="col-md-6" >
+                        <div class="card" >
+                            <form method="POST"  class="box" >
+                                <h1>EDITAR CATEGORIAS</h1>
+                ';
+                do {
+                    $id = $ver['PROID'];
+                    $categoria = $ver['CATNOMBRE'];
+                    $provedor = $ver['PRONOMBRE'];
+                    $nombre = $ver['PRONOMBRE'];
+                    $codigo = $ver['PROCODIGO'];
+                    $valor = $ver['PROVALOR'];
+                    $tipVa = $ver['PORVALTIPO'];
+                    $estado = $ver['PROESTADO'];
+                    echo '
+                        <input type="text" name="id"  value="'.$id.'" readonly placeholder="Nombre">';
+
+                        $revisar = buscarCategorias();
+                        $ver = mysqli_fetch_array($revisar);
+                        echo " <select class='sele' name='categorias'>";
+                        do {
+                            $id = $ver['catid'];
+                            $nombre = $ver['catnombre'];
+                            echo "
+                    <option value='". $id ."'>". $nombre ."</option>";
+                        } while ($ver = mysqli_fetch_array($revisar));
+                        echo "</select>";
+
+                        $revisarp = buscarProvedores();
+                        $ver = mysqli_fetch_array($revisarp);
+                        echo " <select class='sele' name='provedores'>";
+                        do {
+                            $id = $ver['prvid'];
+                            $nombre = $ver['prvnombre'];
+                            echo "
+                    <option value='". $id ."'>". $nombre ."</option>";
+                        } while ($ver = mysqli_fetch_array($revisarp));
+                        echo "</select>";
+
+                    echo '<input type="text" name="codigo"  value="'.$codigo.'" placeholder="Codigo">
+                        <input type="text" name="nombre" value="'.$nombre.'" placeholder="Nombre"> 
+                        <input type="text" name="valor" value="'.$valor.'" placeholder="Valor"> 
+                        <input type="text" name="tipVal" value="'.$tipVa.'" placeholder="Tip.Valor"> 
+                        <select  class="sele" name="tipo">                            
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    ';
+            }while ( $ver = mysqli_fetch_array($editar));
+                echo '
+                        <input type="submit" name="modificar" value="Modificar">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                ';  
+            }
+            if(isset($_POST['modificar'])){
+                $id = $_POST['id'];
+                $nombre = $_POST['nombre'];
+                $codigo = $_POST['codigo'];
+                $valor = $_POST['valor'];
+                $tipVal = $_POST['tipVal'];
+                $provedores = $_POST['provedores'];
+                $categorias = $_POST['categorias'];
+                $tipo = $_POST['tipo'];
+                $editar = actualizar($id,$categorias,$provedores,$codigo,$nombre,$valor,$tipVal,$tipo);
+                echo "<script>window.location.href='buscarProductos.php';</script>";                
+
+        }            
+    ?>
+    </div>
 </body>
 </html>
