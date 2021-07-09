@@ -68,7 +68,7 @@
             if (isset($_POST['eliminar'])) {     
                 $delete = $_POST['eliminar'];                   
                 $borrar = eliminar($delete);
-                echo "<script>window.location.href='javascript:location.reload()</script>";                
+                echo "<script>window.location.href='buscarCategorias.php';</script>";                
             }
             if (isset($_POST['editar'])) {  
                 $edit = $_POST['editar']; 
@@ -110,7 +110,9 @@
                 $nombre = $_POST['nombre'];
                 $descripcion = $_POST['descripcion'];
                 $estado = $_POST['tipo'];
-                $editar = actualizar($id,$nombre,$descripcion,$estado);
+                $editar = actualizar($id,$nombre,$descripcion,$estado,'1');
+                echo "<script>window.location.href='buscarCategorias.php';</script>";                
+
         }            
     ?>
     </div>

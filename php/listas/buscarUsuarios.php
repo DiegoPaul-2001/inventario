@@ -136,7 +136,8 @@
                 $telefono = $_POST['telefono'];
                 $tipo = $_POST['tipo'];
                 $editar = actualizar($id,$cedula,$nombre,$usuario,$clave,$correo,$telefono,$tipo,'1');
-                echo ' <scritp> alert('.$editar.')</script>';
+                echo "<script>window.location.href='buscarUsuarios.php';</script>";                
+
         }            
     ?>
     </div>
