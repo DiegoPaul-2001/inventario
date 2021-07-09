@@ -22,12 +22,13 @@ session_start();
     <link rel="stylesheet" type="text/css" href="../css/estilo.css">
     <br>
     <center>
-        <h1><b style="color: white; background-color:black">FORMULARIO BODEGAS</b>
+        <h1><b style="color: white; background-color:black">FORMULARIO REGISTRO DE PRODUCTOS</h1></b>
     </center>
     <title>ISTVN</title>
 </head>
 <br>
-<center> <a href="formInsertBodegas.php."><button class="btn btn-primary" type="submit" value="' . $id . '" name="editar">Agregar Bodega</button></a></td>
+<br>
+<center> <a href="formInsertRegistro.php."><button class="btn btn-primary" type="submit" value="' . $id . '" name="editar">Agregar Registro</button></a>
     <br>
 
     <body style=" background-size: cover;">
@@ -38,33 +39,36 @@ session_start();
     <div>
         <center>
             <?php
-            include("../php/funciones/funcionBodegas.php");
-            $revisar = BuscarTodosBodegas();
+            include("../php/funciones/funcionRegistro.php");
+            $revisar = BuscarTodosRegistro();
             $ver = mysqli_fetch_array($revisar);
-            echo '<b style>><table  class ="table table-dark table-striped col-10" ,class="">
+            echo '<b style><table  class ="table table-dark table-striped col-10" ,class="">
         <tr class=" table-dark ">
         <td>ID</td>
-        <td>NOMBRE</td>
-        <td>TELEFONO</td>
-        <td>DIRECCION</td>
-        <td>ESTADO</td>
-        <td colspan="4" align="center">ACCIONES</td>
+        <td>BODEGA</td>
+        <td>PRODUCTO</td>
+        <td>USUARIO</td>
+        <td>CANTIDAD</td>
+        <td>FECHA</td>
+        <td colspan="8" align="center">ACCIONES</td>
         
         </tr>';
 
             do {
-                $id = $ver['BODID'];
-                $nombre = $ver['BODNOMBRE'];
-                $telefono = $ver['BODTELEFONO'];
-                $direccion = $ver['BODDIRECCION'];
-                $borrado = $ver['BODBORRADO'];
+                $id = $ver['regid'];
+                $idBod = $ver['bodnombre'];
+                $idPro = $ver['pronombre'];
+                $idUsu = $ver['usunombre'];
+                $cantidad = $ver['regcantidad'];
+                $fecha = $ver['regfecha'];
                 echo '<tr>
             <td>' . $id . '</td>
-            <td>' . $nombre . '</td>
-            <td>' . $telefono . '</td>
-            <td>' . $direccion . '</td>
-             <td>' . $borrado . '</td>
-             <form method="post" action="formModificar.php">
+            <td>' . $idBod . '</td>
+            <td>' . $idPro . '</td>
+            <td>' . $idUsu . '</td>
+            <td>' . $cantidad . '</td>
+            <td>' . $fecha . '</td>
+             <form method="post" action="formModificarRegistro.php">
                 <input style="display:none" type="text" value="' . $id . '" name="id" class="form-control" readonly required placeholder="Id"><br>
            <td align="center"><button class="btn btn-warning" type="submit" value="' . $id . '" name="editar">Editar</button></td>
             </form>
@@ -82,7 +86,7 @@ session_start();
             }
             if (isset($_POST['editar'])) {
                 $edit = $_POST['editar'];
-                header("Location:formModificar.php");
+                header("Location:formModificarRegistro.php");
             }
             ?>
 
