@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LOGIN</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<header>
+	<h1><marquee>Registrate en nuestro sitio web</marquee><!-- marquee sirve para que se mueva las letras--></h1>
+	</header>
+
+	<form method="post" action="registrar_usuarios.php">		
+		<hr> <!--crear una linea como separador-->
+		<h3> Crear una cuenta aqui</h3>
+		<label for="nombre">Nombre de usuario</label><br>
+		<input type="text" name="username" maxlength="30" required><br>
+		<label for="correo">Correo</label><br>
+		<input type="text" name="correo" maxlength="30" required><br>
+		<label for="contra">Contraseña</label><br>
+		<input type="password" name="password" maxlength="30" required><br>
+		<label for="confircontra">Confirmar Contraseña</label><br>
+		<input type="password" name="password1" maxlength="30" required><br><br>
+		<input type="submit" name="submit" value="Registrate">
+		<input type="reset" name="clear" value="Borrar">		
+	</form>
+	<hr><br>
+	<footer>
+		&copy;2021 <a href="http://www.facebook.com/Andres" target="_blank">Visitame en facebook</a> <!--target para que se abra una pagina en blanco-->
+	</footer>
+</body>
+</html>
