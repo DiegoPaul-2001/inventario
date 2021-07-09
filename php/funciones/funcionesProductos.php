@@ -7,9 +7,9 @@
         $conectar = mysqli_connect($servidor, $usuario, $clave,$basedatos) or die("conexion fallida");
         return $conectar;
     }
-    function insertar(int $categoria,int $provedor, string $codigo,string $nombre,double $valor,string $valTipo,string $estado){
+    function insertar($categoria,$provedor,$codigo,$nombre,$valor,$valTipo,$estado){
             $conexion = conexion();          
-            $insertar = "insert into productos values(NULL,'$categoria','$provedor','$codigo','$nombre','$valor','$valTipo','$estado','1')";
+            $insertar = "insert into productos values(NULL,$categoria,$provedor,'$codigo','$nombre',$valor,'$valTipo','$estado','1')";
             $unir = mysqli_query($conexion, $insertar);
             return $unir;   
     }        
@@ -40,17 +40,18 @@
         $unir = mysqli_query($conexion, $eliminar);
 	    return $unir;   
     }
-    function buscar(string $nombre)
-    {                
-        $conexion = conexion();
-        $buscar = "Select * from productos where PRONOMBRE like '$nombre%';";
-        $unir = mysqli_query($conexion, $buscar);
-	    return $unir;   
-    }
-    function consultarCompleja($sql)
-	{
-        $conexion = conexion();
-		$unir = mysqli_query($conexion,$sql);
-		return $unir;
-	}
+    function buscarCategorias()
+{
+    $conexion = conexion();
+    $categorias = "Select c.catid,c.catnombre From categorias c where c.catestado = 'Activo 'and c.catborrado = 1";
+    $unir = mysqli_query($conexion, $categorias);
+    return $unir;
+}
+function buscarProvedores()
+{
+    $conexion = conexion();
+    $categorias = "Select p.prvid,p.prvnombre From provedor p where p.prvborrado = 1";
+    $unir = mysqli_query($conexion, $categorias);
+    return $unir;
+}
 ?>

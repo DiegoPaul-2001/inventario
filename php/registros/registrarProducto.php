@@ -33,28 +33,30 @@
                 <form method="POST"  class="box" >
                     <h1>REGISTRAR PRODUCTOS</h1>
                     <label>CATEGORIAS</label>
-                    <select class="sele" name="categorias">
                     <?php
                     include ("../funciones/funcionesProductos.php");
-                    $categorias = consultarCompleja("select catnombre as categoria,catid as id FROM categorias where catestado = 'ACTIVO' and catBorrado = 1");
-                    foreach($categorias as $row){
-                        $result['id'] = $row['id'];
-                        $result['categoria'] = $row['categoria'];
+                    $revisar = buscarCategorias();
+                        $ver = mysqli_fetch_array($revisar);
+                        echo " <select class='sele' name='categorias'>";
+                        do {
+                            $id = $ver['catid'];
+                            $nombre = $ver['catnombre'];
+                            echo "
+                    <option value='". $id ."'>". $nombre ."</option>";
+                        } while ($ver = mysqli_fetch_array($revisar));
+                        echo "</select>";
+
+                        $revisarp = buscarProvedores();
+                        $ver = mysqli_fetch_array($revisarp);
+                        echo " <select class='sele' name='provedores'>";
+                        do {
+                            $id = $ver['prvid'];
+                            $nombre = $ver['prvnombre'];
+                            echo "
+                    <option value='". $id ."'>". $nombre ."</option>";
+                        } while ($ver = mysqli_fetch_array($revisarp));
+                        echo "</select>";
                     ?>
-                     <option value="<?php $result['id'] ?>"><?php echo $result['categoria'] ?></option>
-                 <?php } ?>
-                </select>
-                <label>PROVEDORES</label>
-                <select class="sele" name="provedores">
-                    <?php
-                    $provedores = consultarCompleja("select prvnombre as provedor,prvid as idP FROM provedor where prvBorrado = 1");
-                    foreach($provedores as $rowP){
-                        $result['idP'] = $rowP['idP'];
-                        $result['provedor'] = $rowP['provedor'];
-                    ?>
-                     <option value="<?php $result['id'] ?>"><?php echo $result['provedor'] ?></option>
-                 <?php } ?>
-                </select>
                     <input type="text" name="codigo" placeholder="Codigo" minlength="0" maxlength="10"> 
                     <input type="text" name="nombre" placeholder="Nombre"> 
                     <input type="number" name="valor" placeholder="Valor"> 
@@ -72,21 +74,21 @@
 </body>
 <?php
     if (isset($_POST['agregar'])) {
-        $cedula = $_POST['cedula'];
+        $codigo = $_POST['codigo'];
         $nombre = $_POST['nombre'];
-        $usuario = $_POST['usuario'];
-        $clave = $_POST['clave'];
-        $correo = $_POST['correo'];
-        $telefono = $_POST['telefono'];
+        $provedores = $_POST['provedores'];
+        $categorias = $_POST['categorias'];
+        $valor = $_POST['valor'];
+        $tipoVal = $_POST['tipVal'];
         $tipo = $_POST['tipo'];
-        $insertar = insertar($cedula,$nombre,$usuario,$clave,$correo,$telefono,$tipo,'1');
+        $insertar = insertar($categorias,$provedores,$codigo,$nombre,$valor,$tipoVal,$tipo);
         if ($insertar) {
             echo "
             <script>
             alert('usuario ingresado correctamente');
         </script>
             ";
-            header("Location: ../listas/buscarUsuarios.php");
+            header("Location: ../listas/buscarProductos.php");
         }else{
             echo "
             <script>alert('Usuario no ingresado');</script>
