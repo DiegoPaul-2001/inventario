@@ -89,7 +89,7 @@
                     echo '
                         <input type="text" name="id"  value="'.$id.'" placeholder="Nombre"> 
                         <input type="text" name="nombre" value="'.$nombre.'" placeholder="Nombre"> 
-                        <input type="text" name="descripcion" value="'.$descripcion.'" placeholder="Usuario"> 
+                        <textarea type="text" name="descripcion" placeholder="Descripcion">'.$descripcion.'</textarea> 
                         <select  class="sele" name="tipo">                            
                                 <option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
@@ -110,9 +110,8 @@
                 $nombre = $_POST['nombre'];
                 $descripcion = $_POST['descripcion'];
                 $estado = $_POST['tipo'];
-                $editar = actualizar($id,$nombre,$descripcion,$estado   );
+                $editar = actualizar($id,$nombre,$descripcion,$estado);
                 echo "<script>window.location.href='buscarCategorias.php';</script>";                
-
         }            
     ?>
     </div>
