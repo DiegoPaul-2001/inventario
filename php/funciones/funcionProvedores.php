@@ -29,7 +29,7 @@
     function actualizar(int $id ,string $nombre, string $descripcion, string $telefono,string $correo)
     {
         $conexion = conexion();       
-        $actualizar = "update provedor SET PRVNOMBRE= $nombre,PRVDESCRIPCION = $descripcion,PRVTELEFONO = $telefono  ,PRVCORREO = $correo WHERE PRVID = $id";
+        $actualizar = "update provedor SET PRVNOMBRE= '$nombre',PRVDESCRIPCION = '$descripcion', PRVTELEFONO = '$telefono', PRVCORREO ='$correo' WHERE PRVID =  $id";
         $unir = mysqli_query($conexion, $actualizar);
         return $unir;
     }
