@@ -79,7 +79,9 @@
             echo '</table></form></center>';                  
             if (isset($_POST['eliminar'])) {     
                 $delete = $_POST['eliminar'];                   
-                $borrar = eliminar($delete);                
+                $borrar = eliminar($delete); 
+                echo "<script>window.location.href='buscarUsuarios.php';</script>";                
+               
             }
             if (isset($_POST['editar'])) {  
                 $edit = $_POST['editar']; 
